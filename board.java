@@ -26,7 +26,7 @@ public class board {
 			int randCol = newNum.nextInt(4);
 			int randRow2 = newNum.nextInt(4);
 			int randCol2 = newNum.nextInt(4);
-			if((theBoard[randRow][randCol]) == (theBoard[randRow2][randCol2])) {
+			if(theBoard[randRow] == theBoard[randRow2] && theBoard[randCol] == theBoard[randCol2]) {
 					randRow2 = newNum.nextInt(4);
 					randCol2 = newNum.nextInt(4);
 			}
