@@ -13,7 +13,6 @@ public class board {
 		String restart = new String();
 		String quit = new String();
 
-		
 			for (int row = 0; row < theBoard.length; row++) {
 				for (int col = 0; col < theBoard[row].length; col++) {
 
@@ -27,7 +26,7 @@ public class board {
 			int randCol = newNum.nextInt(4);
 			int randRow2 = newNum.nextInt(4);
 			int randCol2 = newNum.nextInt(4);
-			if((board[randRow][randCol]) == (board[randRow2][randCol2])) {
+			if((theBoard[randRow][randCol]) == (theBoard[randRow2][randCol2])) {
 					randRow2 = newNum.nextInt(4);
 					randCol2 = newNum.nextInt(4);
 			}
