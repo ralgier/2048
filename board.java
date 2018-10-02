@@ -27,6 +27,10 @@ public class board {
 			int randCol = newNum.nextInt(4);
 			int randRow2 = newNum.nextInt(4);
 			int randCol2 = newNum.nextInt(4);
+			if((board[randRow][randCol]) == (board[randRow2][randCol2])) {
+					randRow2 = newNum.nextInt(4);
+					randCol2 = newNum.nextInt(4);
+			}
 			if (x < 80) {
 				theBoard[randRow][randCol] = 2;
 			} else {
