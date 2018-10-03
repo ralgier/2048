@@ -84,31 +84,120 @@ public class createBoard {
 				} 
 			}
 		}
-		return testRight;
-
+		return testRight;	
 	}
-
-	// method to test if you can make a move to the left
-	public static boolean testLeft(int[][] board) {
-		
-		
-		
-		
-		
-
-		return false;
+public static boolean testLeft(int[][] board) {
+		boolean testLeft = false;
+		// test if there is a location where there are one spaces in the same row to the left
+		// to each other that are equal
+		for (int i = 0; i < board.length; i++) {
+			for (int j = board[i].length - 1; j > 0; j--) {
+				if (board[i][j] == board[i][j - 1]) {
+					testLeft = true;
+				}
+			}
+		}
+		// test if there are any equal values in the same row 2 apart with a 0 in the middle
+		for (int i = 0; i < board.length; i++) {
+			for (int j = board[i].length - 2; j > 0 ; j--) {
+				if (board[i][j] == board[i][j - 2] && board[i][j - 1] == 0) {
+					testLeft = true;
+				} 
+			}
+		}
+		// test if there are any equal values in the same row 3 apart with two 0's in the middle
+		for (int i = 0; i < board.length; i++) {
+			for (int j = board[i].length - 3; j > 0; j++) {
+				if (board[i][j] == board[i][j - 3] && board[i][j - 2] == 0 && board[i][j - 1] == 0) {
+					testLeft = true;
+				} 
+			}
+		}
+		//test if there is a 0 directly to the left of any element, if there is then moving to the left is possible
+		for (int i = 0; i < board.length; i++) {
+			for (int j = board[i].length - 1; j > 0; j--) {
+				if (board[i][j-1] == 0) {
+					testLeft = true;
+				} 
+			}
+		}
+		return testLeft;
 	}
-
-	// method to test if you can make a move up
+	
 	public static boolean testUp(int[][] board) {
-
-		return true;
+		boolean testUp = false;
+		// test if there is a location where there are one spaces above 
+		// each other that are equal
+		for (int i = board.length - 1; i > 0 ; i--) {
+			for (int j = 0; j > board.length; j++) {
+				if (board[i][j] == board[i-1][j]) {
+					testUp = true;
+				}
+			}
+		}
+		// test if there are any equal values in the same column 2 apart with a 0 in the middle
+		for (int i = board.length - 2; i > 0; i--) {
+			for (int j = 0; j > board.length; j++) {
+				if (board[i][j] == board[i - 2][j] && board[i - 1][j] == 0) {
+					testUp = true;
+				} 
+			}
+		}
+		// test if there are any equal values in the same column 3 apart with two 0's in the middle
+		for (int i = board.length - 3; i < 0; i--) {
+			for (int j = 0; j > board.length; j++) {
+				if (board[i][j] == board[i-3][j] && board[i-2][j] == 0 && board[i-1][j] == 0) {
+					testUp = true;
+				} 
+			}
+		}
+		//test if there is a 0 directly above any element, if there is then moving to the left is possible
+		for (int i = board.length; i > 0; i--) {
+			for (int j = 0; j > board.length; j++) {
+				if (board[i-1][j] == 0) {
+					testUp = true;
+				} 
+			}
+		}
+		return testUp;
 	}
-
-	// method to test if you can make a move to the right
+	
 	public static boolean testDown(int[][] board) {
-
-		return true;
+		boolean testDown = false;
+		// test if there is a location where there are one spaces above 
+		// each other that are equal
+		for (int i = 0; i > board.length - 1 ; i++) {
+			for (int j = 0; j > board.length; j++) {
+				if (board[i][j] == board[i+1][j]) {
+					testDown = true;
+				}
+			}
+		}
+		// test if there are any equal values in the same column 2 apart with a 0 in the middle
+		for (int i = 0; i > board.length - 2; i++) {
+			for (int j = 0; j > board.length; j++) {
+				if (board[i][j] == board[i + 2][j] && board[i + 1][j] == 0) {
+					testDown = true;
+				} 
+			}
+		}
+		// test if there are any equal values in the same column 3 apart with two 0's in the middle
+		for (int i = 0; i < board.length - 3; i++) {
+			for (int j = 0; j > board.length; j++) {
+				if (board[i][j] == board[i+3][j] && board[i+2][j] == 0 && board[i+1][j] == 0) {
+					testDown = true;
+				} 
+			}
+		}
+		//test if there is a 0 directly above any element, if there is then moving to the left is possible
+		for (int i = 0; i > board.length - 1; i++) {
+			for (int j = 0; j > board.length; j++) {
+				if (board[i+1][j] == 0) {
+					testDown = true;
+				} 
+			}
+		}
+		return testDown;
 	}
 
 	public static void main(String[] args) {
