@@ -133,11 +133,41 @@ public class createBoard {
 		// each other that are equal
 		for (int i = board.length - 1; i > 0; i--) {
 			for (int j = 0; j > board.length-1; j++) {
-				if (board[i][j] == board[i - 1][j]) {
+				if (board[i][j] == board[i - 1][j] && board[i][j] != 0) {
 					testUp = true;
 				}
 			}
 		}
+		//this loop has index out of bounds
+		for (int i = board.length - 1; i > 0; i--) {
+			for (int j = 0; j > board.length-1; j++) {
+				if (board[i][j] == board[i - 2][j]&& board[i-1][j]==0 && board[i][j] != 0) {
+					testUp = true;
+				}
+			}
+		}
+		//this loop has index out of bounds
+		for (int i = board.length - 1; i > 0; i--) {
+			for (int j = 0; j > board.length-1; j++) {
+				if (board[i][j] == board[i - 3][j] && board [i][j] == 0 && board[i-2][j] == 0 && board[i][j] != 0) {
+					testUp = true;
+				}
+			}
+		}
+		//this loop needs to test if there is a 0 above any point that isnt 0  
+		for (int i = board.length - 1; i > 0; i--) {
+			for (int j = 0; j > board.length-1; j++) {
+				if (board[i][j] != 0 && board[i-1][j] == 0) {
+					testUp = true;
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		
 		return testUp;
 	}
 	
