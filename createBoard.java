@@ -255,57 +255,33 @@ public class createBoard {
 	}
 
 	public static void movementRight(int[][] board) {
-
-		for (int i = 0; i < board.length; i++) {
-
-			for (int j = board.length - 1; j > 0; j--) {
-
-				while (board[i][j] > 0 && board[i][j + 1] == 0) {
-
-					board[i][j + 1] = board[i][j];
-
-					board[i][j] = 0;
-
-				}
-
+		for (int i = 0; i < board.length-1; i++) {
+			for (int j = board.length-2; j>0; j--) {
+				
+			if (board[i][j+1] == 0) {	
+				board[i][j+1]= board[i][j];
+				board[i][j] = 0;
 			}
-
+				
+			}
 		}
-
 	}
-
 	public static void movementLeft(int[][] board) {
-
 		for (int i = 0; i < board.length; i++) {
-
 			for (int j = 0; j < board.length; j++) {
-
 				while (board[i][j] > 0 && board[i][j - 1] == 0) {
-
 					board[i][j - 1] = board[i][j];
-
 					board[i][j] = 0;
-
 				}
-
 			}
-
 		}
-
 	}
-
 	public static void movementUp(int[][] board) {
-
 		for (int i = 0; i < board.length; i++) {
-
 			for (int j = 0; j < board.length; j++) {
-
 				while (board[i][j] > 0 && board[i - 1][j] == 0) {
-
 					board[i - 1][j] = board[i][j];
-
 					board[i][j] = 0;
-
 				}
 
 			}
