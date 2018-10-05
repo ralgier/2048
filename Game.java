@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -104,27 +105,50 @@ public class Game {
 			printMax(theBoard);
 			counter++;
 			// }
+			//newRandomNumber(theBoard);
+			newInt(theBoard);
 		} while (typed != 'q' && endGame());
 	}
 
 	public static void newRandomNumber(int[][] theBoard) {
 		ArrayList<int[][]> list = new ArrayList<int[][]>();
-		int randCount = 0;
-		for(int i = 0; i < theBoard.length; i++) {
-			for(int j = 0; j < theBoard.length; j++) {
-				if(theBoard[i][j] == 0) {
-					list.add(theBoard);
-					System.out.println(theBoard);
+		for (int i = 0; i < theBoard.length; i++) {
+			for (int j = 0; j < theBoard.length; j++) {
+				if (theBoard[i][j] == 0) {
+
+					list.add(i, theBoard);
+
 				}
+
 			}
+
+		}
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+		}
+
+	}
+
+	public static void newInt(int[][] theBoard) {
+		Random gen = new Random();
+		int x = gen.nextInt(100) + 1;
+		int randRow = gen.nextInt(4);
+		int randCol = gen.nextInt(4);
+		// set the probability to 80% for x and 20% for 4 being randomly generated
+		if (theBoard[randRow][randCol] == 0) {
+			if (x < 80) {
+				theBoard[randRow][randCol] = 2;
+			} else {
+				theBoard[randRow][randCol] = 4;
+			}
+		} else { 
+			newInt(theBoard);
 		}
 	}
 
 	public static void moveUp(int[][] theBoard) {
-		
-		
-		
-		if(createBoard.testUp(theBoard)) {
+
+		if (createBoard.testUp(theBoard)) {
 			System.out.println("test is true");
 			createBoard.movementUp(theBoard);
 			createBoard.movementUp(theBoard);
@@ -139,9 +163,8 @@ public class Game {
 	}
 
 	public static void moveLeft(int[][] theBoard) {
-		
-		
-		if(createBoard.testLeft(theBoard)) {
+
+		if (createBoard.testLeft(theBoard)) {
 			System.out.println("test is true");
 			createBoard.movementLeft(theBoard);
 			createBoard.movementLeft(theBoard);
@@ -154,9 +177,8 @@ public class Game {
 	}
 
 	public static void moveDown(int[][] theBoard) {
-		
-		
-		if(createBoard.testDown(theBoard)) {
+
+		if (createBoard.testDown(theBoard)) {
 			System.out.println("test is true");
 			createBoard.movementDown(theBoard);
 			createBoard.movementDown(theBoard);
@@ -169,20 +191,19 @@ public class Game {
 	}
 
 	public static void moveRight(int[][] theBoard) {
-		
-		
+
 		if (createBoard.testRight(theBoard)) {
 			System.out.println("test right works");
-			//call move right 3 times because it only moves one position at a time
+			// call move right 3 times because it only moves one position at a time
 			createBoard.movementRight(theBoard);
 			createBoard.movementRight(theBoard);
 			createBoard.movementRight(theBoard);
-			//createBoard.movementRight(theBoard);
+			// createBoard.movementRight(theBoard);
 			moveCounter++;
-		}else {
+		} else {
 			System.out.println("Test false");
-				//theBoard[0][1] = theBoard [0][0];
-				//theBoard[0][0] = 0;
+			// theBoard[0][1] = theBoard [0][0];
+			// theBoard[0][0] = 0;
 		}
 		printBoard(theBoard);
 	}
