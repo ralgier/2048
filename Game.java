@@ -220,26 +220,14 @@ public class Game {
 
 	public static void moveRight(int[][] theBoard) {
 		
-		theBoard[0][0] =1;
-		theBoard[0][1] =1;
-		theBoard[0][2] =3;
-		theBoard[0][3] =0;
-		theBoard[1][0] =2;
-		theBoard[1][1] =0;
-		theBoard[1][2] =0;
-		theBoard[1][3] =0;
-		theBoard[2][0] =0;
-		theBoard[2][1] =3;
-		theBoard[2][2] =0;
-		theBoard[2][3] =0;
-		theBoard[3][0] =0;
-		theBoard[3][1] =4;
-		theBoard[3][2] =0;
-		theBoard[3][3] =4;
+	
 		
 		if (createBoard.testRight(theBoard)) {
 			System.out.println("test right works");
 			createBoard.movementRight(theBoard);
+			createBoard.movementRight(theBoard);
+			createBoard.movementRight(theBoard);
+			//createBoard.movementRight(theBoard);
 			moveCounter++;
 		}else {
 			System.out.println("Test false");

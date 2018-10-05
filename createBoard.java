@@ -255,14 +255,19 @@ public class createBoard {
 	}
 
 	public static void movementRight(int[][] board) {
-		for (int i = 0; i < board.length-1; i++) {
-			for (int j = board.length-2; j>0; j--) {
+		
+		
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 3; j>0; j--) {
+			
 				
-			if (board[i][j+1] == 0) {	
-				board[i][j+1]= board[i][j];
-				board[i][j] = 0;
-			}
-				
+					if(board[i][j]==0) {
+						
+						board[i][j] = board[i][j-1];
+						board[i][j-1]=0;
+					
+					
+				}
 			}
 		}
 	}
