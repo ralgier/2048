@@ -133,25 +133,13 @@ public class Game {
 
 	public static void moveUp(int[][] theBoard) {
 		
-		theBoard[0][0] =3;
-		theBoard[0][1] =0;
-		theBoard[0][2] =0;
-		theBoard[0][3] =2;
-		theBoard[1][0] =3;
-		theBoard[1][1] =1;
-		theBoard[1][2] =0;
-		theBoard[1][3] =0;
-		theBoard[2][0] =0;
-		theBoard[2][1] =0;
-		theBoard[2][2] =0;
-		theBoard[2][3] =0;
-		theBoard[3][0] =0;
-		theBoard[3][1] =1;
-		theBoard[3][2] =0;
-		theBoard[3][3] =2;
+		
 		
 		if(createBoard.testUp(theBoard)) {
 			System.out.println("test is true");
+			createBoard.movementUp(theBoard);
+			createBoard.movementUp(theBoard);
+			createBoard.movementUp(theBoard);
 			moveCounter++;
 		} else {
 			System.out.println("Cannot move up");
@@ -162,25 +150,13 @@ public class Game {
 	}
 
 	public static void moveLeft(int[][] theBoard) {
-		theBoard[0][0] =2;
-		theBoard[0][1] =2;
-		theBoard[0][2] =2;
-		theBoard[0][3] =2;
-		theBoard[1][0] =0;
-		theBoard[1][1] =0;
-		theBoard[1][2] =0;
-		theBoard[1][3] =0;
-		theBoard[2][0] =0;
-		theBoard[2][1] =0;
-		theBoard[2][2] =0;
-		theBoard[2][3] =0;
-		theBoard[3][0] =0;
-		theBoard[3][1] =0;
-		theBoard[3][2] =0;
-		theBoard[3][3] =0;
+		
 		
 		if(createBoard.testLeft(theBoard)) {
 			System.out.println("test is true");
+			createBoard.movementLeft(theBoard);
+			createBoard.movementLeft(theBoard);
+			createBoard.movementLeft(theBoard);
 			moveCounter++;
 		} else {
 			System.out.println("Cannot move left");
@@ -190,27 +166,12 @@ public class Game {
 
 	public static void moveDown(int[][] theBoard) {
 		
-		theBoard[0][0] =2;
-		theBoard[0][1] =2;
-		theBoard[0][2] =2;
-		theBoard[0][3] =2;
-		theBoard[1][0] =0;
-		theBoard[1][1] =0;
-		theBoard[1][2] =0;
-		theBoard[1][3] =0;
-		theBoard[2][0] =0;
-		theBoard[2][1] =0;
-		theBoard[2][2] =0;
-		theBoard[2][3] =0;
-		theBoard[3][0] =0;
-		theBoard[3][1] =0;
-		theBoard[3][2] =0;
-		theBoard[3][3] =0;
-		
-		
 		
 		if(createBoard.testDown(theBoard)) {
 			System.out.println("test is true");
+			createBoard.movementDown(theBoard);
+			createBoard.movementDown(theBoard);
+			createBoard.movementDown(theBoard);
 			moveCounter++;
 		} else {
 			System.out.println("Cannot move down");
@@ -220,10 +181,10 @@ public class Game {
 
 	public static void moveRight(int[][] theBoard) {
 		
-	
 		
 		if (createBoard.testRight(theBoard)) {
 			System.out.println("test right works");
+			//call move right 3 times because it only moves one position at a time
 			createBoard.movementRight(theBoard);
 			createBoard.movementRight(theBoard);
 			createBoard.movementRight(theBoard);
