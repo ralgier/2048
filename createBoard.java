@@ -82,6 +82,7 @@ public class createBoard {
 			}
 		}
 		return testRight;
+		
 	}
 
 	public static boolean testLeft(int[][] board) {
@@ -139,7 +140,7 @@ public class createBoard {
 			}
 		}
 		//this loop has index out of bounds
-		for (int i = board.length-2; i > 1; i--) {
+		for (int i = board.length-1; i > 1; i--) {
 			for (int j = 0; j < board.length; j++) {
 				if (board[i][j] == board[i-2][j]&& board[i-1][j]==0 && board[i-2][j] != 0) {
 					testUp = true;
@@ -147,7 +148,7 @@ public class createBoard {
 			}
 		}
 		//this loop has index out of bounds
-		for (int i = board.length-3; i > 2; i--) {
+		for (int i = board.length-1; i > 2; i--) {
 			for (int j = 0; j < board.length; j++) {
 				if (board[i][j] == board[i-3][j] && board [i-1][j] == 0 && board[i-2][j] == 0 && board[i-3][j] != 0) {
 					testUp = true;
@@ -210,6 +211,52 @@ public class createBoard {
 		}
 		return testDown;
 	}
+	
+	public static void movementRight(int[][] board) {
+		for(int i = 0; i < board.length; i++) {
+			for(int j = board.length - 1; j > 0; j--) {
+				while(board[i][j] > 0 && board[i][j+1] == 0) {
+					board[i][j+1] = board[i][j];
+					board[i][j] = 0;
+					
+				}
+			}
+		}
+	}
+	
+	public static void movementLeft(int[][] board) {
+		for(int i = 0; i < board.length; i++) {
+			for(int j = 0; j < board.length; j++) {
+				while(board[i][j] > 0 && board[i][j-1] == 0) {
+					board[i][j-1] = board[i][j];
+					board[i][j] = 0;
+				}
+			}
+		}
+	}
+	
+	public static void movementUp(int[][] board) {
+		for(int i = 0; i < board.length; i++) {
+			for(int j = 0; j < board.length; j++) {
+				while(board[i][j] > 0 && board[i-1][j] == 0) {
+					board[i-1][j] = board[i][j];
+					board[i][j] = 0;
+				}
+			}
+		}
+	}
+	
+	public static void movementDown(int[][] board) {
+		for(int i = 0; i < board.length; i++) {
+			for(int j = 0; j < board.length; j++) {
+				while(board[i][j] > 0 && board[i+1][j] == 0) {
+					board[i+1][j] = board[i][j];
+					board[i][j] = 0;
+				}
+			}
+		}
+	}
+	
 
 	public static void main(String[] args) {
 
