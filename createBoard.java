@@ -28,7 +28,9 @@ public class createBoard {
 	}
 
 	// create method to print the current maximum of the array (needs to be called
+
 	// every time)
+
 	public static void printMax(int[][] board) {
 		int max = 2;
 		for (int row = 0; row < board.length; row++) {
@@ -38,7 +40,6 @@ public class createBoard {
 				}
 			}
 		}
-
 		System.out.println(max);
 	}
 
@@ -51,6 +52,9 @@ public class createBoard {
 			for (int j = 0; j < board[i].length - 1; j++) {
 				if (board[i][j] == board[i][j + 1] && board[i][j] != 0) {
 					testRight = true;
+					board[i][j + 1] = 2 * board[i][j];
+					board[i][j] = 0;
+
 				}
 			}
 		}
@@ -60,39 +64,57 @@ public class createBoard {
 			for (int j = 0; j < board[i].length - 2; j++) {
 				if (board[i][j] == board[i][j + 2] && board[i][j + 1] == 0 && board[i][j] != 0) {
 					testRight = true;
+
+					board[i][j + 2] = 2 * board[i][j];
+					board[i][j] = 0;
+
 				}
+
 			}
+
 		}
+
 		// test if there are any equal values in the same row 3 apart with two 0's in
 		// the middle
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length - 3; j++) {
-				if (board[i][j] == board[i][j + 3] && board[i][j + 1] == 0 && board[i][j + 2] == 0 && board[i][j] != 0) {
+				if (board[i][j] == board[i][j + 3] && board[i][j + 1] == 0 && board[i][j + 2] == 0
+						&& board[i][j] != 0) {
+
 					testRight = true;
+					board[i][j + 3] = 2 * board[i][j];
+					board[i][j] = 0;
+
 				}
 			}
 		}
+
 		// test if there is a 0 directly to the right of any element, if there is then
 		// moving to the right is possible
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length - 1; j++) {
 				if (board[i][j + 1] == 0 && board[i][j] != 0) {
 					testRight = true;
+
 				}
 			}
 		}
+
 		return testRight;
 	}
 
 	public static boolean testLeft(int[][] board) {
 		boolean testLeft = false;
 		// test if there is a location where there are one spaces in the same row to the
-		// lef
+		// left
 		// to each other that are equal
 		for (int i = 0; i < board.length; i++) {
 			for (int j = board.length - 1; j > 0; j--) {
 				if (board[i][j] == board[i][j - 1] && board[i][j] != 0) {
 					testLeft = true;
+					board[i][j - 1] = 2 * board[i][j];
+					board[i][j] = 0;
+
 				}
 			}
 		}
@@ -102,15 +124,23 @@ public class createBoard {
 			for (int j = board[i].length - 2; j > 1; j--) {
 				if (board[i][j] == board[i][j - 2] && board[i][j - 1] == 0 && board[i][j] != 0) {
 					testLeft = true;
+					board[i][j - 2] = 2 * board[i][j];
+					board[i][j] = 0;
 				}
+
 			}
+
 		}
+
 		// test if there are any equal values in the same row 3 apart with two 0's in
 		// the middle
 		for (int i = 0; i < board.length; i++) {
 			for (int j = board[i].length - 3; j > 2; j--) {
-				if (board[i][j] == board[i][j - 3] && board[i][j - 2] == 0 && board[i][j - 1] == 0 && board[i][j] != 0) {
+				if (board[i][j] == board[i][j - 3] && board[i][j - 2] == 0 && board[i][j - 1] == 0
+						&& board[i][j] != 0) {
 					testLeft = true;
+					board[i][j - 3] = 2 * board[i][j];
+					board[i][j] = 0;
 				}
 			}
 		}
@@ -125,59 +155,67 @@ public class createBoard {
 		}
 		return testLeft;
 	}
-	
-	
+
 	public static boolean testUp(int[][] board) {
+
 		boolean testUp = false;
 		// test if there is a location where there are one spaces above
 		// each other that are equal
-		for (int i = board.length-1; i > 0; i--) {
+		for (int i = board.length - 1; i > 0; i--) {
 			for (int j = 0; j < board.length; j++) {
-				if (board[i][j] == board[i-1][j] && board[i][j] != 0) {
+				if (board[i][j] == board[i - 1][j] && board[i][j] != 0) {
+					testUp = true;
+
+					board[i - 1][j] = 2 * board[i][j];
+					board[i][j] = 0;
+
+				}
+			}
+		}
+
+		for (int i = board.length - 1; i > 1; i--) {
+			for (int j = 0; j < board.length; j++) {
+				if (board[i][j] == board[i - 2][j] && board[i - 1][j] == 0 && board[i - 2][j] != 0) {
+					testUp = true;
+					board[i - 2][j] = 2 * board[i - 2][j];
+					board[i][j] = 0;
+
+				}
+			}
+		}
+		for (int i = board.length - 1; i > 2; i--) {
+			for (int j = 0; j < board.length; j++) {
+				if (board[i][j] == board[i - 3][j] && board[i - 1][j] == 0 && board[i - 2][j] == 0
+						&& board[i - 3][j] != 0) {
+					testUp = true;
+					board[i - 3][j] = 2 * board[i - 3][j];
+					board[i][j] = 0;
+
+				}
+			}
+		}
+		// this loop needs to test if there is a 0 above any point that isnt 0
+		for (int i = board.length - 1; i > 0; i--) {
+			for (int j = 0; j < board.length; j++) {
+				if (board[i][j] != 0 && board[i - 1][j] == 0) {
 					testUp = true;
 				}
 			}
 		}
-		//this loop has index out of bounds
-		for (int i = board.length-2; i > 1; i--) {
-			for (int j = 0; j < board.length; j++) {
-				if (board[i][j] == board[i-2][j]&& board[i-1][j]==0 && board[i-2][j] != 0) {
-					testUp = true;
-				}
-			}
-		}
-		//this loop has index out of bounds
-		for (int i = board.length-3; i > 2; i--) {
-			for (int j = 0; j < board.length; j++) {
-				if (board[i][j] == board[i-3][j] && board [i-1][j] == 0 && board[i-2][j] == 0 && board[i-3][j] != 0) {
-					testUp = true;
-				}
-			}
-		}
-		//this loop needs to test if there is a 0 above any point that isnt 0  
-		for (int i = board.length-1; i > 0; i--) {
-			for (int j = 0; j < board.length; j++) {
-				if (board[i][j] != 0 && board[i-1][j] == 0) {
-					testUp = true;
-				}
-			}
-		}
-		
-		System.out.println(board.length);
-		
 		return testUp;
 	}
-	
-	
-	
+
 	public static boolean testDown(int[][] board) {
+
 		boolean testDown = false;
 		// test if there is a location where there are one spaces above
 		// each other that are equal
 		for (int i = 0; i < board.length - 1; i++) {
 			for (int j = 0; j < board.length; j++) {
-				if (board[i][j] == board[i + 1][j] && board[i][j]!=0) {
+				if (board[i][j] == board[i + 1][j] && board[i][j] != 0) {
 					testDown = true;
+					board[i + 1][j] = 2 * board[i][j];
+					board[i][j] = 0;
 				}
 			}
 		}
@@ -185,8 +223,10 @@ public class createBoard {
 		// middle
 		for (int i = 0; i < board.length - 2; i++) {
 			for (int j = 0; j < board.length; j++) {
-				if (board[i][j] == board[i + 2][j] && board[i + 1][j] == 0 && board[i][j]!=0) {
+				if (board[i][j] == board[i + 2][j] && board[i + 1][j] == 0 && board[i][j] != 0) {
 					testDown = true;
+					board[i + 2][j] = 2 * board[i][j];
+					board[i][j] = 0;
 				}
 			}
 		}
@@ -194,8 +234,11 @@ public class createBoard {
 		// the middle
 		for (int i = 0; i < board.length - 3; i++) {
 			for (int j = 0; j < board.length; j++) {
-				if (board[i][j] == board[i + 3][j] && board[i + 2][j] == 0 && board[i + 1][j] == 0 && board[i][j]!=0) {
+				if (board[i][j] == board[i + 3][j] && board[i + 2][j] == 0 && board[i + 1][j] == 0
+						&& board[i][j] != 0) {
 					testDown = true;
+					board[i + 3][j] = 2 * board[i][j];
+					board[i][j] = 0;
 				}
 			}
 		}
@@ -210,61 +253,91 @@ public class createBoard {
 		}
 		return testDown;
 	}
-	
-	public static void movementRight(int[][] board) {
-			for(int i = 0; i < board.length; i++) {
-				for(int j = board.length - 1; j > 0; j--) {
-					while(board[i][j] > 0 && board[i][j+1] == 0) {
-						board[i][j+1] = board[i][j];
-						board[i][j] = 0;
-						
-					}
-				}
-			}
-		}
-		
-		public static void movementLeft(int[][] board) {
-			for(int i = 0; i < board.length; i++) {
-				for(int j = 0; j < board.length; j++) {
-					while(board[i][j] > 0 && board[i][j-1] == 0) {
-						board[i][j-1] = board[i][j];
-						board[i][j] = 0;
-					}
-				}
-			}
-		}
-		
-		public static void movementUp(int[][] board) {
-			for(int i = 0; i < board.length; i++) {
-				for(int j = 0; j < board.length; j++) {
-					while(board[i][j] > 0 && board[i-1][j] == 0) {
-						board[i-1][j] = board[i][j];
-						board[i][j] = 0;
-					}
-				}
-			}
-		}
-		
-		public static void movementDown(int[][] board) {
-			for(int i = 0; i < board.length; i++) {
-				for(int j = 0; j < board.length; j++) {
-					while(board[i][j] > 0 && board[i+1][j] == 0) {
-						board[i+1][j] = board[i][j];
-						board[i][j] = 0;
-					}
-				}
-			}
-		}
 
-	public static void main(String[] args) {
+	public static void movementRight(int[][] board) {
+
+		for (int i = 0; i < board.length; i++) {
+
+			for (int j = board.length - 1; j > 0; j--) {
+
+				while (board[i][j] > 0 && board[i][j + 1] == 0) {
+
+					board[i][j + 1] = board[i][j];
+
+					board[i][j] = 0;
+
+				}
+
+			}
+
+		}
 
 	}
 
-}
+	public static void movementLeft(int[][] board) {
 
+		for (int i = 0; i < board.length; i++) {
+
+			for (int j = 0; j < board.length; j++) {
+
+				while (board[i][j] > 0 && board[i][j - 1] == 0) {
+
+					board[i][j - 1] = board[i][j];
+
+					board[i][j] = 0;
+
+				}
+
+			}
+
+		}
+
+	}
+
+	public static void movementUp(int[][] board) {
+
+		for (int i = 0; i < board.length; i++) {
+
+			for (int j = 0; j < board.length; j++) {
+
+				while (board[i][j] > 0 && board[i - 1][j] == 0) {
+
+					board[i - 1][j] = board[i][j];
+
+					board[i][j] = 0;
+
+				}
+
+			}
+
+		}
+
+	}
+
+	public static void movementDown(int[][] board) {
+
+		for (int i = 0; i < board.length; i++) {
+
+			for (int j = 0; j < board.length; j++) {
+
+				while (board[i][j] > 0 && board[i + 1][j] == 0) {
+
+					board[i + 1][j] = board[i][j];
+
+					board[i][j] = 0;
+
+				}
+
+			}
+
+		}
+
+	}
+
+	public static void main(String[] args) {
+	}
+}
 // new columns than what he started with
 //
-
 // need to use array list to get the values where there are o and put that in
 // the list and only randomize from that list
-//

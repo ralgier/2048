@@ -132,124 +132,120 @@ public class Game {
 	}
 
 	public static void moveUp(int[][] theBoard) {
-		theBoard[0][0] = 1;
-		theBoard[0][1] = 0;
-		theBoard[0][2] = 0;
-		theBoard[0][3] = 1;
-		theBoard[1][0] = 1;
-		theBoard[1][1] = 6;
-		theBoard[1][2] = 7;
-		theBoard[1][3] = 8;
-		theBoard[2][0] = 1;
-		theBoard[2][1] = 10;
-		theBoard[2][2] = 11;
-		theBoard[2][3] = 12;
-		theBoard[3][0] = 13;
-		theBoard[3][1] = 14;
-		theBoard[3][2] = 15;
-		theBoard[3][3] = 16;
+		
+		theBoard[0][0] =3;
+		theBoard[0][1] =0;
+		theBoard[0][2] =0;
+		theBoard[0][3] =2;
+		theBoard[1][0] =3;
+		theBoard[1][1] =1;
+		theBoard[1][2] =0;
+		theBoard[1][3] =0;
+		theBoard[2][0] =0;
+		theBoard[2][1] =0;
+		theBoard[2][2] =0;
+		theBoard[2][3] =0;
+		theBoard[3][0] =0;
+		theBoard[3][1] =1;
+		theBoard[3][2] =0;
+		theBoard[3][3] =2;
 		
 		if(createBoard.testUp(theBoard)) {
 			System.out.println("test is true");
+			moveCounter++;
 		} else {
-			System.out.println("the test is false");
+			System.out.println("Cannot move up");
 		}
 
-		System.out.println("up");
-
 		printBoard(theBoard);
-		moveCounter++;
 
 	}
 
 	public static void moveLeft(int[][] theBoard) {
-		theBoard[0][0] = 0;
-		theBoard[0][1] = 0;
-		theBoard[0][2] = 0;
-		theBoard[0][3] = 0;
-		theBoard[1][0] = 1;
-		theBoard[1][1] = 6;
-		theBoard[1][2] = 7;
-		theBoard[1][3] = 8;
-		theBoard[2][0] = 9;
-		theBoard[2][1] = 10;
-		theBoard[2][2] = 11;
-		theBoard[2][3] = 12;
-		theBoard[3][0] = 13;
-		theBoard[3][1] = 14;
-		theBoard[3][2] = 15;
-		theBoard[3][3] = 16;
+		theBoard[0][0] =2;
+		theBoard[0][1] =2;
+		theBoard[0][2] =2;
+		theBoard[0][3] =2;
+		theBoard[1][0] =0;
+		theBoard[1][1] =0;
+		theBoard[1][2] =0;
+		theBoard[1][3] =0;
+		theBoard[2][0] =0;
+		theBoard[2][1] =0;
+		theBoard[2][2] =0;
+		theBoard[2][3] =0;
+		theBoard[3][0] =0;
+		theBoard[3][1] =0;
+		theBoard[3][2] =0;
+		theBoard[3][3] =0;
 		
 		if(createBoard.testLeft(theBoard)) {
 			System.out.println("test is true");
+			moveCounter++;
 		} else {
-			System.out.println("the test is false");
+			System.out.println("Cannot move left");
 		}
-		System.out.println("left");
-
 		printBoard(theBoard);
-
-		moveCounter++;
 	}
 
 	public static void moveDown(int[][] theBoard) {
 		
-		theBoard[0][0] = 1;
-		theBoard[0][1] = 2;
-		theBoard[0][2] = 2;
-		theBoard[0][3] = 1;
-		theBoard[1][0] = 1;
-		theBoard[1][1] = 6;
-		theBoard[1][2] = 7;
-		theBoard[1][3] = 8;
-		theBoard[2][0] = 9;
-		theBoard[2][1] = 10;
-		theBoard[2][2] = 11;
-		theBoard[2][3] = 12;
-		theBoard[3][0] = 13;
-		theBoard[3][1] = 14;
-		theBoard[3][2] = 15;
-		theBoard[3][3] = 16;
+		theBoard[0][0] =2;
+		theBoard[0][1] =2;
+		theBoard[0][2] =2;
+		theBoard[0][3] =2;
+		theBoard[1][0] =0;
+		theBoard[1][1] =0;
+		theBoard[1][2] =0;
+		theBoard[1][3] =0;
+		theBoard[2][0] =0;
+		theBoard[2][1] =0;
+		theBoard[2][2] =0;
+		theBoard[2][3] =0;
+		theBoard[3][0] =0;
+		theBoard[3][1] =0;
+		theBoard[3][2] =0;
+		theBoard[3][3] =0;
+		
+		
 		
 		if(createBoard.testDown(theBoard)) {
 			System.out.println("test is true");
+			moveCounter++;
 		} else {
-			System.out.println("the test is false");
+			System.out.println("Cannot move down");
 		}
-		
-		System.out.println("down");
-		moveCounter++;
+		printBoard(theBoard);
 	}
 
 	public static void moveRight(int[][] theBoard) {
-		theBoard[0][0] = 0;
-		theBoard[0][1] = 0;
-		theBoard[0][2] = 0;
-		theBoard[0][3] = 0;
-		theBoard[1][0] = 1;
-		theBoard[1][1] = 6;
-		theBoard[1][2] = 7;
-		theBoard[1][3] = 8;
-		theBoard[2][0] = 19;
-		theBoard[2][1] = 10;
-		theBoard[2][2] = 11;
-		theBoard[2][3] = 12;
-		theBoard[3][0] = 13;
-		theBoard[3][1] = 14;
-		theBoard[3][2] = 15;
-		theBoard[3][3] = 16;
 		
+		theBoard[0][0] =1;
+		theBoard[0][1] =1;
+		theBoard[0][2] =0;
+		theBoard[0][3] =0;
+		theBoard[1][0] =2;
+		theBoard[1][1] =0;
+		theBoard[1][2] =0;
+		theBoard[1][3] =0;
+		theBoard[2][0] =0;
+		theBoard[2][1] =0;
+		theBoard[2][2] =0;
+		theBoard[2][3] =0;
+		theBoard[3][0] =0;
+		theBoard[3][1] =0;
+		theBoard[3][2] =0;
+		theBoard[3][3] =0;
 		
 		if (createBoard.testRight(theBoard)) {
 			System.out.println("test right works");
-			System.out.println("true");
+			createBoard.movementRight(theBoard);
 			moveCounter++;
 		}else {
 			System.out.println("Test false");
 				//theBoard[0][1] = theBoard [0][0];
 				//theBoard[0][0] = 0;
 		}
-
 		printBoard(theBoard);
 	}
 
