@@ -99,34 +99,13 @@ public class Game {
 				System.out.println("That is not a valid input. Please enter w,a,s,d,r or q");
 			}
 
-			// print out the number of moves made and the max value on the board after each
-			// move
+			// print out the number of moves made and the max value on the board after each move
 			System.out.println("Number of moves made: " + moveCounter);
 			printMax(theBoard);
 			counter++;
-			// }
-			//newRandomNumber(theBoard);
-			newInt(theBoard);
+			
+			
 		} while (typed != 'q' && endGame());
-	}
-
-	public static void newRandomNumber(int[][] theBoard) {
-		ArrayList<int[][]> list = new ArrayList<int[][]>();
-		for (int i = 0; i < theBoard.length; i++) {
-			for (int j = 0; j < theBoard.length; j++) {
-				if (theBoard[i][j] == 0) {
-
-					list.add(i, theBoard);
-
-				}
-
-			}
-
-		}
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i));
-		}
-
 	}
 
 	public static void newInt(int[][] theBoard) {
@@ -154,6 +133,7 @@ public class Game {
 			createBoard.movementUp(theBoard);
 			createBoard.movementUp(theBoard);
 			moveCounter++;
+			newInt(theBoard);
 		} else {
 			System.out.println("Cannot move up");
 		}
@@ -162,6 +142,8 @@ public class Game {
 
 	}
 
+	//2 apart for moveMent left didnt work (didnt add)
+	
 	public static void moveLeft(int[][] theBoard) {
 
 		if (createBoard.testLeft(theBoard)) {
@@ -170,6 +152,7 @@ public class Game {
 			createBoard.movementLeft(theBoard);
 			createBoard.movementLeft(theBoard);
 			moveCounter++;
+			newInt(theBoard);
 		} else {
 			System.out.println("Cannot move left");
 		}
@@ -184,6 +167,7 @@ public class Game {
 			createBoard.movementDown(theBoard);
 			createBoard.movementDown(theBoard);
 			moveCounter++;
+			newInt(theBoard);
 		} else {
 			System.out.println("Cannot move down");
 		}
@@ -200,6 +184,7 @@ public class Game {
 			createBoard.movementRight(theBoard);
 			// createBoard.movementRight(theBoard);
 			moveCounter++;
+			newInt(theBoard);
 		} else {
 			System.out.println("Test false");
 			// theBoard[0][1] = theBoard [0][0];
