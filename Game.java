@@ -108,27 +108,16 @@ public class Game {
 	}
 
 	public static void newRandomNumber(int[][] theBoard) {
-		Random newNum = null;
-		int a = newNum.nextInt(100) + 1;
-		int b = newNum.nextInt(100) + 1;
-		int randRow = newNum.nextInt(4);
-		int randCol = newNum.nextInt(4);
-		// we need to put this in some sort of loop to check every value of the array
-
-		if (a < 80) {
-			// we need to test if the randomly selected location is empty or not, else we
-			// need to run again
-			if (theBoard[randRow][randCol] == 0) {
-				theBoard[randRow][randCol] = 2;
-			}
-		} else {
-
-			if (theBoard[randRow][randCol] == 0) {
-				theBoard[randRow][randCol] = 4;
+		ArrayList<int[][]> list = new ArrayList<int[][]>();
+		int randCount = 0;
+		for(int i = 0; i < theBoard.length; i++) {
+			for(int j = 0; j < theBoard.length; j++) {
+				if(theBoard[i][j] == 0) {
+					list.add(theBoard);
+					System.out.println(theBoard);
+				}
 			}
 		}
-		// print out the new board again
-		printBoard(theBoard);
 	}
 
 	public static void moveUp(int[][] theBoard) {
