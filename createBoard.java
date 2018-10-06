@@ -1,4 +1,15 @@
 public class createBoard {
+	
+	
+	//test if no moves left to make
+	//special cases up down
+	//adding 2 to the left
+	// if max = 2048, you win 
+	//game over (other than quitting) 
+	//check all the math 
+	//*if board full see if generating new random works
+	
+	
 
 	// method to test if the board is full, returns value of boolean
 
@@ -118,31 +129,56 @@ public class createBoard {
 				}
 			}
 		}
-			// test if there are any equal values in the same row 2 apart with a 0 in the
+		// test if there are any equal values in the same row 2 apart with a 0 in the
+
 		// middle
+
 		for (int i = 0; i < board.length; i++) {
+
 			for (int j = board[i].length - 1; j >1; j--) {
+
 				if (board[i][j] == board[i][j - 2] && board[i][j - 1] == 0 && board[i][j] != 0) {
+
 					testLeft = true;
+
 					board[i][j - 2] = 2 * board[i][j];
+
 					board[i][j] = 0;
+
 				}
 
+
+
 			}
+
+
 
 		}
 
+
+
 		// test if there are any equal values in the same row 3 apart with two 0's in
+
 		// the middle
+
 		for (int i = 0; i < board.length; i++) {
+
 			for (int j = board[i].length - 1; j > 2; j--) {
+
 				if (board[i][j] == board[i][j - 3] && board[i][j - 2] == 0 && board[i][j - 1] == 0
+
 						&& board[i][j] != 0) {
+
 					testLeft = true;
+
 					board[i][j - 3] = 2 * board[i][j];
+
 					board[i][j] = 0;
+
 				}
+
 			}
+
 		}
 		// test if there is a 0 directly to the left of any element, if there is then
 		// moving to the left is possible

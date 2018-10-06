@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Game {
 	// create a static int to increment the number of moves throughout
 	static int moveCounter = 0;
+	static char typed = 'w';
 
 	// main method
 	public static void main(String[] args) {
@@ -53,12 +54,30 @@ public class Game {
 			}
 			System.out.println(" ");
 		}
-		char typed = 'e';
 		// as long as there is a vaild move to be made, enter the move choice loop
 		do {
 			// if (endGame()) {
 			System.out.println("w = up; a = left; s = down; d = right; q = quit; r = restart: ");
 			typed = scan.next().charAt(0);
+
+			int testCounter = 0;
+			if (createBoard.testUp(theBoard)) {
+				testCounter++;
+			}
+			if (createBoard.testLeft(theBoard)) {
+				testCounter++;
+			}
+			if (createBoard.testRight(theBoard)) {
+				testCounter++;
+			}
+			if (createBoard.testDown(theBoard)) {
+				testCounter++;
+			}
+
+			if (testCounter == 0) {
+				endGame();
+			}
+
 			if (typed == 'w') {
 
 				moveUp(theBoard);
@@ -85,9 +104,10 @@ public class Game {
 
 				}
 			} else if (typed == 'q') {
-
+				if (testCounter != 0) {
 				System.out.print("Are you sure? Enter q again to quit or w to keep playing: ");
 				typed = scan.next().charAt(0);
+				}
 				if (typed == 'q') {
 
 					quit();
@@ -99,13 +119,17 @@ public class Game {
 				System.out.println("That is not a valid input. Please enter w,a,s,d,r or q");
 			}
 
-			// print out the number of moves made and the max value on the board after each move
+			// print out the number of moves made and the max value on the board after each
+			// move
 			System.out.println("Number of moves made: " + moveCounter);
 			printMax(theBoard);
 			counter++;
-			
-			
-		} while (typed != 'q' && endGame());
+			if (youWin(theBoard)) {
+				System.out.println("You made it to 2048! Congrats! You WIN!!!");
+				endGame();
+			}
+
+		} while (typed != 'q');
 	}
 
 	public static void newInt(int[][] theBoard) {
@@ -120,7 +144,7 @@ public class Game {
 			} else {
 				theBoard[randRow][randCol] = 4;
 			}
-		} else { 
+		} else {
 			newInt(theBoard);
 		}
 	}
@@ -128,7 +152,6 @@ public class Game {
 	public static void moveUp(int[][] theBoard) {
 
 		if (createBoard.testUp(theBoard)) {
-			System.out.println("test is true");
 			createBoard.movementUp(theBoard);
 			createBoard.movementUp(theBoard);
 			createBoard.movementUp(theBoard);
@@ -142,12 +165,11 @@ public class Game {
 
 	}
 
-	//2 apart for moveMent left didnt work (didnt add)
-	
+	// 2 apart for moveMent left didnt work (didnt add)
+
 	public static void moveLeft(int[][] theBoard) {
 
 		if (createBoard.testLeft(theBoard)) {
-			System.out.println("test is true");
 			createBoard.movementLeft(theBoard);
 			createBoard.movementLeft(theBoard);
 			createBoard.movementLeft(theBoard);
@@ -162,7 +184,6 @@ public class Game {
 	public static void moveDown(int[][] theBoard) {
 
 		if (createBoard.testDown(theBoard)) {
-			System.out.println("test is true");
 			createBoard.movementDown(theBoard);
 			createBoard.movementDown(theBoard);
 			createBoard.movementDown(theBoard);
@@ -177,7 +198,6 @@ public class Game {
 	public static void moveRight(int[][] theBoard) {
 
 		if (createBoard.testRight(theBoard)) {
-			System.out.println("test right works");
 			// call move right 3 times because it only moves one position at a time
 			createBoard.movementRight(theBoard);
 			createBoard.movementRight(theBoard);
@@ -186,9 +206,7 @@ public class Game {
 			moveCounter++;
 			newInt(theBoard);
 		} else {
-			System.out.println("Test false");
-			// theBoard[0][1] = theBoard [0][0];
-			// theBoard[0][0] = 0;
+			System.out.println("Cannot move right");
 		}
 		printBoard(theBoard);
 	}
@@ -242,10 +260,30 @@ public class Game {
 		System.out.println("The maximum value on the Board is: " + max);
 	}
 
-	// create boolean method to test if game is ended
-	public static boolean endGame() {
-		boolean endGame = true;
-		return endGame;
+	public static boolean youWin(int[][] board) {
+		boolean youWin = false;
+		int max = 2;
+		for (int row = 0; row < board.length; row++) {
+			for (int col = 0; col < board[row].length; col++) {
+
+				if (board[row][col] > max) {
+					max = board[row][col];
+				}
+
+			}
+		}
+		if (max == 2048) {
+			youWin = true;
+		}
+		return youWin;
+	}
+
+	// create boolean to end the game when you get 2048 or have no moves left to
+	// make
+	public static void endGame() {
+		System.out.println("The game is over. Thanks for playing");
+
+		typed = 'q';
 
 	}
 
