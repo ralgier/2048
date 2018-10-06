@@ -118,10 +118,10 @@ public class createBoard {
 				}
 			}
 		}
-		// test if there are any equal values in the same row 2 apart with a 0 in the
+			// test if there are any equal values in the same row 2 apart with a 0 in the
 		// middle
 		for (int i = 0; i < board.length; i++) {
-			for (int j = board[i].length - 2; j > 1; j--) {
+			for (int j = board[i].length - 1; j >1; j--) {
 				if (board[i][j] == board[i][j - 2] && board[i][j - 1] == 0 && board[i][j] != 0) {
 					testLeft = true;
 					board[i][j - 2] = 2 * board[i][j];
@@ -135,7 +135,7 @@ public class createBoard {
 		// test if there are any equal values in the same row 3 apart with two 0's in
 		// the middle
 		for (int i = 0; i < board.length; i++) {
-			for (int j = board[i].length - 3; j > 2; j--) {
+			for (int j = board[i].length - 1; j > 2; j--) {
 				if (board[i][j] == board[i][j - 3] && board[i][j - 2] == 0 && board[i][j - 1] == 0
 						&& board[i][j] != 0) {
 					testLeft = true;
