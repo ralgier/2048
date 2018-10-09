@@ -1,95 +1,98 @@
-import java.util.Random;
-import java.util.Scanner;
 
 public class movement {
 
-	static int counter = 2;
+	// NEED TO CHANGE ALL THE METHOD TO MOVE IN THEIR RESPECTIVE DIRECTION< LEFT
+	// ALREADY WRK CORRECTLY
 
-	public static void main(String[] args) {
-		
-		board.main(args);
-
-		Scanner scan = new Scanner(System.in);
-
-		char typed;
-		do {
-			System.out.println("w = up; a = left; s = down; d = right; q = quit; r = restart: ");
-
-			typed = scan.next().charAt(0);
-
-			if (typed == 'w') {
-				moveUp();
-
-			} else if (typed == 'a') {
-				moveRight();
-
-			} else if (typed == 's') {
-				moveDown();
-				
-			} else if (typed == 'd') {	
-				moveRight();
-				
-			} else if (typed == 'r') {
-
-				System.out.print("Are you sure? Enter r again to restart: ");
-				typed = scan.next().charAt(0);
-				if (typed == 'r') {
-					restart();
+	public static void moveLeft(int[][] board) {
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 1; j < board.length; j++) {
+				if (board[i][j - 1] == 0) {
+					board[i][j - 1] = board[i][j];
+					board[i][j] = 0;
 				}
-
-			} else if (typed == 'q') {
-
-				System.out.print("Are you sure? Enter q again to quit or w to keep playing: ");
-				typed = scan.next().charAt(0);
-
-				if (typed == 'q') {
-					quit();
-				}
-
-			} else {
-
-				System.out.println("That is not a valid input. Please enter w,a,s,d,r or q");
 			}
-		} while (typed != 'q' && typed != 'r');
-
-	}
-	
-	
-
-	public static void moveUp() {
-		System.out.println("up");
-		board.newRandomNumber(theBoard);
+		}
 	}
 
-	public static void moveLeft() {
-		System.out.println("left");
+	public static void smushLeft(int[][] board) {
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board.length - 1; j++) {
+				if (board[i][j + 1] == board[i][j]) {
+					board[i][j] = 2 * board[i][j];
+					board[i][j + 1] = 0;
+				}
+
+			}
+		}
 	}
 
-	public static void moveDown() {
-		System.out.println("down");
-	}
-
-	public static void moveRight() {
-		System.out.println("right");
-		
-//		for (int q = 0; q < myArray.length; q++) {
-//			for (int w = 0; w < myArray[0].length - 1; w++) {
-//				myArray[q][w + 1] = myArray[q][w + 1] + myArray[q][w];
-//
-//			}
-//
-//		}
-//		lab3.print2dArray(myArray);
-	}
-
-	public static void restart() {
-		System.out.println("Restarting...");
+	public static void moveRight(int[][] board) {
+		for (int i = 0; i < board.length; i++) {
+			for (int j = board.length - 1; j > 0; j--) {
+				if (board[i][j] == 0) {
+					board[i][j] = board[i][j - 1];
+					board[i][j - 1] = 0;
+				}
+			}
+		}
 
 	}
 
-	public static void quit() {
+	public static void smushRight(int[][] board) {
+		for (int i = 0; i < board.length; i++) {
+			for (int j = board.length - 1; j > 0; j--) {
+				if (board[i][j - 1] == board[i][j]) {
+					board[i][j] = 2 * board[i][j];
+					board[i][j - 1] = 0;
+				}
+			}
+		}
+	}
 
-		System.out.println("game over. Moves made: " + counter);
+	public static void moveUp(int[][] board) {
+		for (int i = 0; i < board.length - 1; i++) {
+			for (int j = 0; j < board.length; j++) {
+				if (board[i][j] == 0) {
+					board[i][j] = board[i + 1][j];
+					board[i + 1][j] = 0;
+				}
+			}
+		}
+	}
+
+	public static void smushUp(int[][] board) {
+		for (int i = 0; i < board.length - 1; i++) {
+			for (int j = 0; j < board.length; j++) {
+				if (board[i + 1][j] == board[i][j]) {
+					board[i][j] = 2 * board[i][j];
+					board[i + 1][j] = 0;
+				}
+			}
+		}
+	}
+
+	public static void moveDown(int[][] board) {
+		for (int i = board.length - 1; i > 0; i--) {
+			for (int j = 0; j < board.length; j++) {
+				if (board[i][j] == 0) {
+					board[i][j] = board[i - 1][j];
+					board[i - 1][j] = 0;
+				}
+			}
+		}
+	}
+
+	public static void smushDown(int[][] board) {
+		for (int i = board.length - 1; i > 0; i--) {
+			for (int j = 0; j < board.length; j++) {
+				if (board[i][j] == board[i - 1][j]) {
+					board[i][j] = 2 * board[i][j];
+					board[i - 1][j] = 0;
+				}
+
+			}
+		}
 	}
 
 }
