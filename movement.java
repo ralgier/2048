@@ -94,5 +94,27 @@ public class movement {
 			}
 		}
 	}
+	
+	public static boolean testMovement(int[][] board) {
+		boolean testMovement = false;
+		
+		int[][] tempBoard = board;
+		
+		for (int i = 0; i < board.length; i++) {
+			for(int j = 0; i < board.length; i++) {
+				if(tempBoard[i][j] != board[i][j]) { 
+					testMovement = true;
+				}
+			}
+		}
+			return testMovement;	
+	}
 
+	//we need to create a temporary array for each movement and if the temporary array is the same as the array after moving
+	//then you cant move that direction...4 methods maybe 
+	//if you cant move anydirection, the game is over and call the end game method
+	
+	
+	//cant quish and board is gull,, game is over
+	
 }
