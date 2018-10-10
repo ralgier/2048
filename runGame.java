@@ -6,6 +6,7 @@ public class runGame {
 	// create a static int to increment the number of moves throughout
 	static int moveCounter = 0;
 	static char typed = 'e';
+	static int directionCounter =0;
 
 	// main method
 	public static void main(String[] args) {
@@ -57,6 +58,8 @@ public class runGame {
 		// as long as there is a vaild move to be made, enter the move choice loop
 		do {
 			// if (endGame()) {
+			System.out.println(" ");
+			System.out.println(" ");
 			System.out.println("w = up; a = left; s = down; d = right; q = quit; r = restart: ");
 			typed = scan.next().charAt(0);
 			//if the user enetered w, move up
@@ -107,7 +110,13 @@ public class runGame {
 			counter++;
 			if (youWin(theBoard)) {
 				System.out.println("You made it to 2048! Congrats! You WIN!!!");
-				endGame();
+				endGame(theBoard);
+			}
+			if(boardFull(theBoard)) {
+				if(noMovesLeft(theBoard)) {
+					System.out.println("There are no moves left: You Lose");
+					endGame(theBoard);
+				}
 			}
 
 		} while (typed != 'q');
@@ -132,7 +141,14 @@ public class runGame {
 	}
 	//move up method which calls move and then smush and then move again
 	public static void moveUp(int[][] theBoard) {
-
+		boolean testUp = false;
+		int [][] tempBoard = new int[4][4];
+		for (int i = 0; i < tempBoard.length; i++) {
+			for(int j = 0; j < tempBoard[i].length; j++) {
+				tempBoard[i][j] = theBoard[i][j]; 
+			}
+		}
+	
 		movement.moveUp(theBoard);
 		movement.moveUp(theBoard);
 		movement.moveUp(theBoard);
@@ -142,16 +158,36 @@ public class runGame {
 		movement.moveUp(theBoard);
 		movement.moveUp(theBoard);
 		movement.moveUp(theBoard);
+		//create a for loop that tests if any value of the temp array is not equal to any value of the original array
+		//if so, the move is vaid, if not, you cannot move that direction and the move counter does not increase
+		for (int i = 0; i < theBoard.length; i++) {
+			for(int j = 0; j < theBoard.length; j++) {
+				if(tempBoard[i][j] != theBoard[i][j]) { 
+					testUp = true;
+				}
+			}
+		}
+		
+		if (testUp) {
+			moveCounter++;
+			System.out.println(" ");
+			newInt(theBoard);
+		} else {
 
-		moveCounter++;
-		newInt(theBoard);
-
+			System.out.println("Cannot move up. Please enter another direction.");
+		}
 		printBoard(theBoard);
 
 	}
 
 	public static void moveLeft(int[][] theBoard) {
-
+		boolean testLeft = false;
+		int [][] tempBoard = new int[4][4];
+		for (int i = 0; i < tempBoard.length; i++) {
+			for(int j = 0; j < tempBoard[i].length; j++) {
+				tempBoard[i][j] = theBoard[i][j]; 
+			}
+		}
 		// move everything to the left
 		// need to call the method 3 times because it only moves things over 1 element
 		// at a time
@@ -165,21 +201,35 @@ public class runGame {
 		movement.moveLeft(theBoard);
 		movement.moveLeft(theBoard);
 		movement.moveLeft(theBoard);
-
-		moveCounter++;
-		newInt(theBoard);
-
-		// we need a method if (boardNew = boardCopy after the movement, then counter
-		// does not go up and
-		// print that you cannot move that direction
-
-		// test method might still be useful but completely chnage the process
-		// still use booleans
+		
+		for (int i = 0; i < theBoard.length; i++) {
+			for(int j = 0; j < theBoard.length; j++) {
+				if(tempBoard[i][j] != theBoard[i][j]) { 
+					testLeft = true;
+				}
+			}
+		}
+		
+		if (testLeft) {
+			moveCounter++;
+			System.out.println(" ");
+			newInt(theBoard);
+		} else {
+			System.out.println("Cannot move left. Please enter another direction.");
+		}
 
 		printBoard(theBoard);
+
 	}
 
 	public static void moveDown(int[][] theBoard) {
+		boolean testDown = false;
+		int [][] tempBoard = new int[4][4];
+		for (int i = 0; i < tempBoard.length; i++) {
+			for(int j = 0; j < tempBoard[i].length; j++) {
+				tempBoard[i][j] = theBoard[i][j]; 
+			}
+		}
 		// shift everything down (3x because it only moves one at a time)
 		movement.moveDown(theBoard);
 		movement.moveDown(theBoard);
@@ -191,13 +241,34 @@ public class runGame {
 		movement.moveDown(theBoard);
 		movement.moveDown(theBoard);
 		movement.moveDown(theBoard);
+		for (int i = 0; i < theBoard.length; i++) {
+			for(int j = 0; j < theBoard.length; j++) {
+				if(tempBoard[i][j] != theBoard[i][j]) { 
+					testDown = true;
+				}
+			}
+		}
+		
+		if (testDown) {
+			moveCounter++;
+			System.out.println(" ");
+			newInt(theBoard);
+		} else {
+			System.out.println("Cannot move down. Please enter another direction.");
+		}
 
-		moveCounter++;
-		newInt(theBoard);
 		printBoard(theBoard);
+
 	}
 
 	public static void moveRight(int[][] theBoard) {
+		boolean testRight = false;
+		int [][] tempBoard = new int[4][4];
+		for (int i = 0; i < tempBoard.length; i++) {
+			for(int j = 0; j < tempBoard[i].length; j++) {
+				tempBoard[i][j] = theBoard[i][j]; 
+			}
+		}
 		// shift everything Right (3x because it only moves one at a time)
 		movement.moveRight(theBoard);
 		movement.moveRight(theBoard);
@@ -209,9 +280,23 @@ public class runGame {
 		movement.moveRight(theBoard);
 		movement.moveRight(theBoard);
 
-		moveCounter++;
-		newInt(theBoard);
+		for (int i = 0; i < theBoard.length; i++) {
+			for(int j = 0; j < theBoard.length; j++) {
+				if(tempBoard[i][j] != theBoard[i][j]) { 
+					testRight = true;
+				}
+			}
+		}
+		
+		if (testRight) {
+			moveCounter++;
+			System.out.println(" ");
+			newInt(theBoard);
+		} else {
+			System.out.println("Cannot move right. Please enter another direction.");
+		}
 		printBoard(theBoard);
+
 	}
 
 	public static void restart() {
@@ -287,11 +372,68 @@ public class runGame {
 		}
 		return youWin;
 	}
-	// create boolean to end the game when you get 2048 or have no moves left to make
-	public static void endGame() {
+	// create method to end the game when you get 2048 or have no moves left to make
+	public static void endGame(int[][] theBoard) {
+		
+		System.out.println("You made " + moveCounter + " moves.");
+		printMax(theBoard);
 		System.out.println("The game is over. Thanks for playing");
 
 		typed = 'q';
 
 	}
+	public static boolean boardFull(int[][] theBoard) {
+		boolean boardFull = false;
+		int countEmpty = 0;
+		
+		for (int i = 0; i < theBoard.length; i++) {
+			for(int j = 0; j < theBoard.length; j++) {
+				if(theBoard[i][j] == 0) { 
+					countEmpty++;
+				}
+			}
+		}
+		if (countEmpty == 0) {
+			boardFull = true;
+		}
+		
+		return boardFull;
+		
+	}
+	public static boolean noMovesLeft(int[][] theBoard) {
+		boolean noMovesLeft = true;
+		
+		int [][] tempBoard = new int[4][4];
+		for (int i = 0; i < tempBoard.length; i++) {
+			for(int j = 0; j < tempBoard[i].length; j++) {
+				tempBoard[i][j] = theBoard[i][j]; 
+			}
+		}
+		
+		movement.smushRight(theBoard);
+		movement.smushLeft(theBoard);
+		movement.smushUp(theBoard);
+		movement.smushDown(theBoard);
+		
+		for (int i = 0; i < theBoard.length; i++) {
+			for(int j = 0; j < theBoard.length; j++) {
+				if(tempBoard[i][j] != theBoard[i][j]) { 
+					noMovesLeft = false;
+				}
+			}
+		}
+		
+		
+		return noMovesLeft;
+	}
 }
+ 
+
+
+
+//one possibility is if the board is full, have a counter fot each cannot move each direction, if coujter is 4 Game over
+//problem is it requires you to try to move each direction even when the board is full
+
+
+
+
